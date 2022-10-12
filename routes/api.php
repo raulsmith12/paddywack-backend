@@ -9,6 +9,11 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeSectionController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\JoinController;
+use App\Http\Controllers\JoinPageController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ShopImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -84,8 +89,32 @@ Route::post('/home-sliders', [HomeSliderController::class, 'store']);
 Route::put('/home-sliders/{home-slider}', [HomeSliderController::class, 'update']);
 Route::delete('/home-sliders/{home-slider}', [HomeSliderController::class, 'destroy']);
 
-Route::get('/', [::class, 'index']);
-Route::get('//{}', [::class, 'show']);
-Route::post('/', [::class, 'store']);
-Route::put('//{}', [::class, 'update']);
-Route::delete('//{}', [::class, 'destroy']);
+Route::get('/join', [JoinController::class, 'index']);
+Route::get('/join/{id}', [JoinController::class, 'show']);
+Route::post('/join', [JoinController::class, 'store']);
+Route::put('/join/{id}', [JoinController::class, 'update']);
+Route::delete('/join/{id}', [JoinController::class, 'destroy']);
+
+Route::get('/join-page', [JoinPageController::class, 'index']);
+Route::get('/join-page/{id}', [JoinPageController::class, 'show']);
+Route::post('/join-page', [JoinPageController::class, 'store']);
+Route::put('/join-page/{id}', [JoinPageController::class, 'update']);
+Route::delete('/join-page/{id}', [JoinPageController::class, 'destroy']);
+
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
+Route::get('/privacy-policy/{privacy}', [PrivacyPolicyController::class, 'show']);
+Route::post('/privacy-policy', [PrivacyPolicyController::class, 'store']);
+Route::put('/privacy-policy/{privacy}', [PrivacyPolicyController::class, 'update']);
+Route::delete('/privacy-policy/{privacy}', [PrivacyPolicyController::class, 'destroy']);
+
+Route::get('/shop', [ShopController::class, 'index']);
+Route::get('/shop/{id}', [ShopController::class, 'show']);
+Route::post('/shop', [ShopController::class, 'store']);
+Route::put('/shop/{id}', [ShopController::class, 'update']);
+Route::delete('/shop/{id}', [ShopController::class, 'destroy']);
+
+Route::get('/shop-images', [ShopImageController::class, 'index']);
+Route::get('/shop-images/{image}', [ShopImageController::class, 'show']);
+Route::post('/shop-images', [ShopImageController::class, 'store']);
+Route::put('/shop-images/{image}', [ShopImageController::class, 'update']);
+Route::delete('/shop-images/{image}', [ShopImageController::class, 'destroy']);
