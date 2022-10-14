@@ -39,13 +39,18 @@ class CommissionController extends Controller
         return new CommissionResource($commission);
     }
 
-    public function update (Commission $commission)
+    public function update (Request $request, Commission $commission)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'name' => 'required|min:1|max:255',
+            'email' => 'required',
+            'size' => 'required',
+            'shape' => 'required'
+        ]);
 
-        $commission->update($data);
+        $commission->update($request->all());
 
-        return new CommissionResource($commission);
+        return $commission;
     }
 
     public function destroy (Commission $commission)

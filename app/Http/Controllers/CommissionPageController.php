@@ -37,13 +37,16 @@ class CommissionPageController extends Controller
         return new CommissionPageResource($commission_page);
     }
 
-    public function update (CommissionPage $commission_page)
+    public function update (Request $request, CommissionPage $commission_page)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'title' => 'required|min:1|max:255',
+            'page_content' => 'required'
+        ]);
 
-        $commission_page->update($data);
+        $commission_page->update($request->all());
 
-        return new CommissionPageResource($commission_page);
+        return $commission_page;
     }
 
     public function destroy (CommissionPage $commission_page)

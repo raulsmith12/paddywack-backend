@@ -37,13 +37,16 @@ class GalleryController extends Controller
         return new GalleryResource($gallery);
     }
 
-    public function update (Gallery $gallery)
+    public function update (Request $request, Gallery $gallery)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'image_url' => 'required|min:1|max:255',
+            'description' => 'required'
+        ]);
 
-        $gallery->update($data);
+        $gallery->update($request->all());
 
-        return new GalleryResource($gallery);
+        return $gallery;
     }
 
     public function destroy (Gallery $gallery)

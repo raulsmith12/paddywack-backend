@@ -38,13 +38,17 @@ class JoinController extends Controller
         return new JoinResource($join);
     }
 
-    public function update (Join $join)
+    public function update (Request $request, Join $join)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'name' => 'required|min:1|max:255',
+            'email' => 'required',
+            'message' => 'required'
+        ]);
 
-        $join->update($data);
+        $join->update($request->all());
 
-        return new JoinResource($join);
+        return $join;
     }
 
     public function destroy (Join $join)

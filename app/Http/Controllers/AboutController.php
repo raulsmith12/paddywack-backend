@@ -37,13 +37,16 @@ class AboutController extends Controller
         return new AboutResource($about);
     }
 
-    public function update (About $about)
+    public function update (Request $request, About $about)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'title' => 'required|min:1|max:255',
+            'description' => 'required'
+        ]);
 
-        $about->update($data);
+        $about->update($request->all());
 
-        return new AboutResource($about);
+        return $about;
     }
 
     public function destroy (About $about)

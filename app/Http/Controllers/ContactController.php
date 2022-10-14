@@ -38,13 +38,17 @@ class ContactController extends Controller
         return new ContactResource($contact);
     }
 
-    public function update (Contact $contact)
+    public function update (Request $request, Contact $contact)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'name' => 'required|min:1|max:255',
+            'email' => 'required',
+            'message' => 'required'
+        ]);
 
-        $contact->update($data);
+        $contact->update($request->all());
 
-        return new ContactResource($contact);
+        return $contact;
     }
 
     public function destroy (Contact $contact)

@@ -39,13 +39,18 @@ class ShopController extends Controller
         return new ShopResource($shop);
     }
 
-    public function update (Shop $shop)
+    public function update (Request $request, Shop $shop)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'name' => 'required|min:1|max:255',
+            'description' => 'required',
+            'price' => 'required',
+            'paypal_id' => 'required'
+        ]);
 
-        $shop->update($data);
+        $shop->update($request->all());
 
-        return new ShopResource($shop);
+        return $shop;
     }
 
     public function destroy (Shop $shop)

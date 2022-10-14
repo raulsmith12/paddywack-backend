@@ -37,13 +37,16 @@ class ContactPageController extends Controller
         return new ContactPageResource($contact_page);
     }
 
-    public function update (ContactPage $contact_page)
+    public function update (Request $request, ContactPage $contact_page)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'title' => 'required|min:1|max:255',
+            'page_content' => 'required'
+        ]);
 
-        $contact_page->update($data);
+        $contact_page->update($request->all());
 
-        return new ContactPageResource($contact_page);
+        return $contact_page;
     }
 
     public function destroy (ContactPage $contact_page)

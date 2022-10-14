@@ -37,13 +37,16 @@ class JoinPageController extends Controller
         return new JoinPageResource($join_page);
     }
 
-    public function update (JoinPage $join_page)
+    public function update (Request $request, JoinPage $join_page)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'title' => 'required|min:1|max:255',
+            'page_content' => 'required'
+        ]);
 
-        $join_page->update($data);
+        $join_page->update($request->all());
 
-        return new JoinPageResource($join_page);
+        return $join_page;
     }
 
     public function destroy (JoinPage $join_page)

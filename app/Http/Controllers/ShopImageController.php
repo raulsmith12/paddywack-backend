@@ -36,13 +36,15 @@ class ShopImageController extends Controller
         return new ShopImageResource($shop_image);
     }
 
-    public function update (ShopImage $shop_image)
+    public function update (Request $request, ShopImage $shop_image)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'image_url' => 'required'
+        ]);
 
-        $shop_image->update($data);
+        $shop_image->update($request->all());
 
-        return new ShopImageResource($shop_image);
+        return $shop_image;
     }
 
     public function destroy (ShopImage $shop_image)

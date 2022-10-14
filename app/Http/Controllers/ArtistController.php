@@ -37,13 +37,16 @@ class ArtistController extends Controller
         return new ArtistResource($artist);
     }
 
-    public function update (Artist $artist)
+    public function update (Request $request, Artist $artist)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'name' => 'required|min:1|max:255',
+            'description' => 'required'
+        ]);
 
-        $artist->update($data);
+        $artist->update($request->all());
 
-        return new ArtistResource($artist);
+        return $artist;
     }
 
     public function destroy (Artist $artist)

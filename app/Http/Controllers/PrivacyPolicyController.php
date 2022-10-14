@@ -37,13 +37,16 @@ class PrivacyPolicyController extends Controller
         return new PrivacyPolicyResource($privacy_policy);
     }
 
-    public function update (PrivacyPolicy $privacy_policy)
+    public function update (Request $request, PrivacyPolicy $privacy_policy)
     {
-        $data = $this->validateRequest();
+        $request()->validate([
+            'title' => 'required|min:1|max:255',
+            'page_content' => 'required'
+        ]);
 
-        $privacy_policy->update($data);
+        $privacy_policy->update($request->all());
 
-        return new PrivacyPolicyResource($privacy_policy);
+        return $privacy_policy;
     }
 
     public function destroy (PrivacyPolicy $privacy_policy)
