@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\CommissionPageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeSectionController;
 use App\Http\Controllers\HomeSliderController;
@@ -118,3 +119,6 @@ Route::get('/shop-images/{shop_image}', [ShopImageController::class, 'show']);
 Route::post('/shop-images', [ShopImageController::class, 'store']);
 Route::put('/shop-images/{shop_image}', [ShopImageController::class, 'update']);
 Route::delete('/shop-images/{shop_image}', [ShopImageController::class, 'destroy']);
+
+Route::get('files', [FileController::class, 'index']);
+Route::post('files', [FileController::class, 'upload'])->name('file.store');
