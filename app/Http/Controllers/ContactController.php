@@ -40,7 +40,7 @@ class ContactController extends Controller
 
     public function update (Request $request, Contact $contact)
     {
-        $request()->validate([
+        $request->validate([
             'name' => 'required|min:1|max:255',
             'email' => 'required',
             'message' => 'required'

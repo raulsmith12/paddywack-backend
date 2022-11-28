@@ -38,7 +38,7 @@ class HomeSliderController extends Controller
 
     public function update (Request $request, HomeSlider $home_slider)
     {
-        $request()->validate([
+        $request->validate([
             'image_url' => 'required'
         ]);
 

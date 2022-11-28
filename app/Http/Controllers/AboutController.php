@@ -39,7 +39,7 @@ class AboutController extends Controller
 
     public function update (Request $request, About $about)
     {
-        $request()->validate([
+        $request->validate([
             'title' => 'required|min:1|max:255',
             'description' => 'required'
         ]);

@@ -39,7 +39,7 @@ class JoinPageController extends Controller
 
     public function update (Request $request, JoinPage $join_page)
     {
-        $request()->validate([
+        $request->validate([
             'title' => 'required|min:1|max:255',
             'page_content' => 'required'
         ]);

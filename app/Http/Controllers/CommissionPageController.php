@@ -39,7 +39,7 @@ class CommissionPageController extends Controller
 
     public function update (Request $request, CommissionPage $commission_page)
     {
-        $request()->validate([
+        $request->validate([
             'title' => 'required|min:1|max:255',
             'page_content' => 'required'
         ]);

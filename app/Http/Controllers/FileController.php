@@ -29,6 +29,6 @@ class FileController extends Controller
 
         Storage::disk('public')->put($fileName, base64_decode($filename[1]));
 
-        return response('https://paddywackgifts.com/backend/storage/app/public/uploads/'.$fileName);
+        return response('https://paddywackgifts.com/backend/storage/app/public/'.$fileName);
     }
 }

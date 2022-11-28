@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\HomeSection;
 use App\Http\Resources\HomeSectionResource;
-
+use Illuminate\Http\Request;
 
 class HomeSectionController extends Controller
 {
@@ -41,7 +40,7 @@ class HomeSectionController extends Controller
 
     public function update (Request $request, HomeSection $home_section)
     {
-        $request()->validate([
+        $request->validate([
             'title' => 'required|min:1|max:255',
             'description' => 'required',
             'link_url' => 'required',

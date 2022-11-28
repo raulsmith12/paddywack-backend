@@ -41,7 +41,7 @@ class ShopController extends Controller
 
     public function update (Request $request, Shop $shop)
     {
-        $request()->validate([
+        $request->validate([
             'name' => 'required|min:1|max:255',
             'description' => 'required',
             'price' => 'required',

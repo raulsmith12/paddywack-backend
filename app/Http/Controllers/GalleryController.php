@@ -39,7 +39,7 @@ class GalleryController extends Controller
 
     public function update (Request $request, Gallery $gallery)
     {
-        $request()->validate([
+        $request->validate([
             'image_url' => 'required|min:1|max:255',
             'description' => 'required'
         ]);

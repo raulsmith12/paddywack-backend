@@ -39,7 +39,7 @@ class ContactPageController extends Controller
 
     public function update (Request $request, ContactPage $contact_page)
     {
-        $request()->validate([
+        $request->validate([
             'title' => 'required|min:1|max:255',
             'page_content' => 'required'
         ]);

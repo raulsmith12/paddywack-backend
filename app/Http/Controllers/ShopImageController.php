@@ -38,7 +38,7 @@ class ShopImageController extends Controller
 
     public function update (Request $request, ShopImage $shop_image)
     {
-        $request()->validate([
+        $request->validate([
             'image_url' => 'required'
         ]);
 

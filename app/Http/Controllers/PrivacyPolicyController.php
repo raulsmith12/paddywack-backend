@@ -39,7 +39,7 @@ class PrivacyPolicyController extends Controller
 
     public function update (Request $request, PrivacyPolicy $privacy_policy)
     {
-        $request()->validate([
+        $request->validate([
             'title' => 'required|min:1|max:255',
             'page_content' => 'required'
         ]);
