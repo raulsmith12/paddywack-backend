@@ -20,7 +20,7 @@ class ShopResource extends JsonResource
             'description' => $this->description,
             'price' => $this->price,
             'paypal_id' => $this->paypal_id,
-            'images' => ShopImageResource::collection($this->images)
+            'images' => ShopImageResource::collection($this->shop_images)
         ];
     }
 }

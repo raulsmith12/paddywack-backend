@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactPageController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\CommissionPageController;
 use App\Http\Controllers\ContactController;

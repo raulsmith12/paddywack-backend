@@ -25,8 +25,7 @@ class ShopController extends Controller
         return request()->validate([
             'name' => 'required|min:1|max:255',
             'description' => 'required',
-            'price' => 'required',
-            'paypal_id' => 'required'
+            'price' => 'required'
         ]);
     }
 
@@ -44,8 +43,7 @@ class ShopController extends Controller
         $request->validate([
             'name' => 'required|min:1|max:255',
             'description' => 'required',
-            'price' => 'required',
-            'paypal_id' => 'required'
+            'price' => 'required'
         ]);
 
         $shop->update($request->all());
