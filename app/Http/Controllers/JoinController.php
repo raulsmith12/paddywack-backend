@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Join;
 use App\Http\Resources\JoinResource;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class JoinController extends Controller
 {
@@ -36,6 +37,15 @@ class JoinController extends Controller
         $join = Join::create($data);
 
         return new JoinResource($join);
+
+        $mailData = [
+            'title' => 'You Have Mail, Tiger!',
+            'body' => 'Contact Mail Sent'
+        ];
+
+        Mail::to('tiger@paddywackgifts.com')->send(new ContactMail($mailData));
+
+        dd("Mail sent successfully");
     }
 
     public function update (Request $request, Join $join)
