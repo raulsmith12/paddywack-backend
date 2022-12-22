@@ -16,6 +16,7 @@ class ShopImageResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'shop_id' => $this->shop_id,
             'image_url' => $this->image_url,
             'thumbnail_url' => $this->thumbnail_url
         ];

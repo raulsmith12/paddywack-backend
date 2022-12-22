@@ -9,7 +9,7 @@ class ShopImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image_url', 'thumbnail_url'];
+    protected $fillable = ['shop_id', 'image_url', 'thumbnail_url'];
 
     public function shop()
     {

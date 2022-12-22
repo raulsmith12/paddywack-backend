@@ -23,7 +23,9 @@ class ShopImageController extends Controller
     protected function validateRequest ()
     {
         return request()->validate([
-            'image_url' => 'required'
+            'shop_id' => 'required',
+            'image_url' => 'required',
+            'thumbnail_url' => 'required'
         ]);
     }
 
