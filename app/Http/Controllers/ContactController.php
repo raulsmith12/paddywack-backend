@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Http\Resources\ContactResource;
-use Illuminate\Support\Facades\Mail;
+use Mail;
 use App\Mail\ContactMail;
 
 class ContactController extends Controller
@@ -26,7 +26,8 @@ class ContactController extends Controller
         return request()->validate([
             'name' => 'required|min:1|max:255',
             'email' => 'required',
-            'message' => 'required'
+            'message' => 'required',
+            'phone_no' => 'sometimes'
         ]);
     }
 
@@ -37,15 +38,6 @@ class ContactController extends Controller
         $contact = Contact::create($data);
 
         return new ContactResource($contact);
-
-        $mailData = [
-            'title' => 'You Have Mail, Tiger!',
-            'body' => 'Contact Mail Sent'
-        ];
-
-        Mail::to('tiger@paddywackgifts.com')->send(new ContactMail($mailData));
-
-        dd("Mail sent successfully");
     }
 
     public function update (Request $request, Contact $contact)

@@ -38,15 +38,6 @@ class CommissionController extends Controller
         $commission = Commission::create($data);
 
         return new CommissionResource($commission);
-
-        $mailData = [
-            'title' => 'You Have Mail, Tiger!',
-            'body' => 'Contact Mail Sent'
-        ];
-
-        Mail::to('tiger@paddywackgifts.com')->send(new ContactMail($mailData));
-
-        dd("Mail sent successfully");
     }
 
     public function update (Request $request, Commission $commission)

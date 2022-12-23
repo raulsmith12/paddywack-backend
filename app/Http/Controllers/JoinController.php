@@ -37,15 +37,6 @@ class JoinController extends Controller
         $join = Join::create($data);
 
         return new JoinResource($join);
-
-        $mailData = [
-            'title' => 'You Have Mail, Tiger!',
-            'body' => 'Contact Mail Sent'
-        ];
-
-        Mail::to('tiger@paddywackgifts.com')->send(new ContactMail($mailData));
-
-        dd("Mail sent successfully");
     }
 
     public function update (Request $request, Join $join)
