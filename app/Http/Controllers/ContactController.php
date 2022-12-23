@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Http\Resources\ContactResource;
-use Mail;
 use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -36,6 +36,8 @@ class ContactController extends Controller
         $data = $this->validateRequest();
 
         $contact = Contact::create($data);
+
+        Mail::to('raul.smith@galacticdigitalstudios.com')->send(new ContactMail($data));
 
         return new ContactResource($contact);
     }
