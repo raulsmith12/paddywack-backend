@@ -26,7 +26,9 @@ class JoinController extends Controller
         return request()->validate([
             'name' => 'required|min:1|max:255',
             'email' => 'required',
-            'message' => 'required'
+            'message' => 'required',
+            'phone_no' => 'sometimes',
+            'country' => 'sometimes'
         ]);
     }
 
@@ -36,7 +38,7 @@ class JoinController extends Controller
 
         $join = Join::create($data);
 
-        Mail::to('raul.smith@galacticdigitalstudios.com')->send(new JoinMail($data));
+        Mail::to('tiger@paddywackgifts.com')->send(new JoinMail($data));
 
         return new JoinResource($join);
     }

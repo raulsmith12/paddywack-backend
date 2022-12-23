@@ -37,7 +37,7 @@ class ContactController extends Controller
 
         $contact = Contact::create($data);
 
-        Mail::to('raul.smith@galacticdigitalstudios.com')->send(new ContactMail($data));
+        Mail::to('tiger@paddywackgifts.com')->send(new ContactMail($data));
 
         return new ContactResource($contact);
     }
