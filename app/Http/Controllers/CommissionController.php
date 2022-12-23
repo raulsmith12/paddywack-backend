@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Commission;
 use App\Http\Resources\CommissionResource;
+use App\Mail\CommissionMail;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactMail;
 
 class CommissionController extends Controller
 {
@@ -36,6 +36,8 @@ class CommissionController extends Controller
         $data = $this->validateRequest();
 
         $commission = Commission::create($data);
+
+        Mail::to('raul.smith@galacticdigitalstudios.com')->send(new CommissionMail($data));
 
         return new CommissionResource($commission);
     }

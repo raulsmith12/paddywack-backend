@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Join;
 use App\Http\Resources\JoinResource;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactMail;
+use App\Mail\JoinMail;
 
 class JoinController extends Controller
 {
@@ -35,6 +35,8 @@ class JoinController extends Controller
         $data = $this->validateRequest();
 
         $join = Join::create($data);
+
+        Mail::to('raul.smith@galacticdigitalstudios.com')->send(new JoinMail($data));
 
         return new JoinResource($join);
     }
